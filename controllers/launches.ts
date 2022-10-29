@@ -1,27 +1,31 @@
 import { Router } from "express";
+import { SPACEX_API_URL } from "../configs/api";
 
 const launchesRouter = Router();
 
+const fetchSpaceX = (path: string) =>
+  fetch(`${SPACEX_API_URL}/launches/${path}`);
+
 launchesRouter.get("/next", (_, res) => {
-  fetch("https://api.spacexdata.com/v4/launches/next")
+  fetchSpaceX("next")
     .then((data) => data.json())
     .then((data) => res.json(data));
 });
 
 launchesRouter.get("/latest", (_, res) => {
-  fetch("https://api.spacexdata.com/v4/launches/latest")
+  fetchSpaceX("latest")
     .then((data) => data.json())
     .then((data) => res.json(data));
 });
 
 launchesRouter.get("/upcoming", (_, res) => {
-  fetch("https://api.spacexdata.com/v4/launches/upcoming")
+  fetchSpaceX("upcoming")
     .then((data) => data.json())
     .then((data) => res.json(data));
 });
 
 launchesRouter.get("/past", (_, res) => {
-  fetch("https://api.spacexdata.com/v4/launches/past")
+  fetchSpaceX("past")
     .then((data) => data.json())
     .then((data) => res.json(data));
 });
