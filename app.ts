@@ -3,6 +3,8 @@ import launchesRouter from "./controllers/launches";
 import middlewares from "./utils/middlewares";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(middlewares.requestLogger);
 
 app.use("/launches", launchesRouter);
