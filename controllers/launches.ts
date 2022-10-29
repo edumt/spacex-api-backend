@@ -20,4 +20,10 @@ launchesRouter.get("/upcoming", (_, res) => {
     .then((data) => res.json(data));
 });
 
+launchesRouter.get("/past", (_, res) => {
+  fetch("https://api.spacexdata.com/v4/launches/past")
+    .then((data) => data.json())
+    .then((data) => res.json(data));
+});
+
 export default launchesRouter;
