@@ -1,7 +1,6 @@
 import app from "./app";
+import { API_PORT } from "./configs/api";
 
-const PORT = 8000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(API_PORT || 8000, () => {
+  console.log(`Server running on port ${API_PORT || 8000}`);
 });
