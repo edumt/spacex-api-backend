@@ -11,4 +11,6 @@ app.use(middlewares.requestLogger);
 
 app.use("/launches", launchesRouter);
 
+app.use(middlewares.unknownEndpoint);
+
 export default app;
