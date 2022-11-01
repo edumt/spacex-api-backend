@@ -25,4 +25,14 @@ launchesRouter.get("/past", (_, res) => {
   fetchSpaceXAPI("past", res);
 });
 
+launchesRouter.post("/query", (req, res) => {
+  fetch(`${SPACEX_API_URL}/launches/query`, {
+    method: "POST",
+    body: JSON.stringify(req.body),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((rawData) => rawData.json())
+    .then((data) => res.json(data));
+});
+
 export default launchesRouter;
